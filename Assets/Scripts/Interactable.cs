@@ -79,8 +79,8 @@ public class Interactable : MonoBehaviour {
             case InteractableType.LOOSE_TILE:
                 if (pickUp.inventory.Contains("CROWBAR"))
                 {
-                    Destroy(transform.FindChild("brokentile"));
-                    transform.FindChild("key").gameObject.SetActive(true);
+                    Destroy(gameObject);
+                    transform.parent.FindChild("key").gameObject.SetActive(true);
                 }
                 else
                 {
