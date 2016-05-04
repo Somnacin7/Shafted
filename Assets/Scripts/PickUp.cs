@@ -7,10 +7,8 @@ public class PickUp : MonoBehaviour {
 
     
     public Canvas canvas;
-    public GameObject myo = null;
     public string curText { get; set; }
     public List<string> inventory;
-    private Thalmic.Myo.Pose lastPose = Thalmic.Myo.Pose.Unknown;
 
     private void Start()
     {
@@ -19,14 +17,6 @@ public class PickUp : MonoBehaviour {
 
     private void Update()
     {
-        var thalmicMyo = myo.GetComponent<ThalmicMyo>();
-        bool myoTap = false;
-        if (thalmicMyo.pose != lastPose && thalmicMyo.pose == Thalmic.Myo.Pose.DoubleTap)
-        {
-            Debug.Log("TAP");
-            myoTap = true;
-        }
-
         var fwd = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, fwd, out hit))
@@ -38,7 +28,7 @@ public class PickUp : MonoBehaviour {
                 var objHit = hit.collider.gameObject.GetComponent<Interactable>() ?? hit.collider.gameObject.GetComponentInParent<Interactable>();
                 if (objHit != null)
                 {
-                    if (Input.GetMouseButtonDown(0) || myoTap)
+                    if (Input.GetMouseButtonDown(0))
                     {
                         objHit.interact(this);
                     }
