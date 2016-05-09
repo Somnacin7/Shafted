@@ -9,7 +9,8 @@ public class Interactable : MonoBehaviour {
     {
         DOORS,
         BRIEFCASE,
-        DOOR_OPEN_BUTTON,
+        DOOR_OPEN_BUTTON_OFF,
+        DOOR_OPEN_BUTTON_ON,
         KEY_SLOT,
         KEY_PANEL,
         KEY,
@@ -55,7 +56,7 @@ public class Interactable : MonoBehaviour {
                     hoverText = "The briefcase is locked";
                 }
                 break;
-            case InteractableType.DOOR_OPEN_BUTTON:
+            case InteractableType.DOOR_OPEN_BUTTON_ON:
                 hoverText = "CONGRATULATIONS!  YOU WIN!";
                 break;
             case InteractableType.KEY_SLOT:
